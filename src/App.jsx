@@ -1,21 +1,32 @@
 import { useState } from "react";
-import { render } from "react-dom";
 import "./App.css";
 import { generateKey, calculateSDES } from "./utils/HelperFunctions";
+import { validateInputText, validateMasterKey } from "./utils/ValidateInput";
 import KeyGeneration from "./components/KeyGeneration";
 import SimplifiedDES from "./components/SimplifiedDES";
 
 function App() {
-  let keyGeneration = generateKey("0111100001");
-  let result = calculateSDES("01001011", keyGeneration.finalKeys, "ENCRYPT");
-  console.log(result)
+  const [OutputText, setOutputText] = useState("");
+  const [Mode, setMode] = useState("ENCRYPT");
+
+  const runSDES = (e) => {
+    e.preventDefault();
+    let inputText = e.target[0].value;
+    let masterKey = e.target[1].value;
+
+    if (validateInputText(inputText) && validateMasterKey(masterKey)) {
+      let { finalKeys } = generateKey(masterKey);
+      let { finalPerm } = calculateSDES(inputText, finalKeys, Mode);
+      setOutputText(finalPerm);
+    }
+  };
 
   return (
     <div className="container p-3 prose bg-violet-200">
       <h1 className="hero-content text-center">Simplified DES Calculator</h1>
       <div className="bg-white rounded-md">
         <h2 className="text-center ">Input:</h2>
-        <form>
+        <form onSubmit={runSDES}>
           <div className="flex flex-row justify-center gap-20">
             <div>
               <label className="label">8-bit Plaintext/Ciphertext</label>
@@ -46,9 +57,12 @@ function App() {
                 <input
                   type="radio"
                   name="mode"
+                  checked={Mode === "ENCRYPT"}
                   value="ENCRYPT"
                   className="radio checked:bg-blue-500"
-                  // onChange={() => {}}
+                  onChange={(e) => {
+                    setMode(e.target.value);
+                  }}
                 />
               </label>
             </div>
@@ -58,26 +72,32 @@ function App() {
                 <input
                   type="radio"
                   name="mode"
+                  checked={Mode === "DECRYPT"}
                   value="DECRYPT"
                   className="radio checked:bg-blue-500"
-                  // onChange={() => {}}
+                  onChange={(e) => {
+                    setMode(e.target.value);
+                  }}
                 />
               </label>
             </div>
           </div>
 
-
           <div className="flex flex-row mb-5 p-2 gap-10 justify-center">
-            <button type="submit" className="btn btn-secondary w-32 rounded-full">
+            <button
+              type="submit"
+              className="btn btn-secondary w-32 rounded-full"
+            >
               Submit
             </button>
-            <button type="reset" className="btn btn-error w-32 rounded-full">
+            <button type="reset" onClick={() => {setMode('ENCRYPT')}} className="btn btn-error w-32 rounded-full">
               Reset
             </button>
           </div>
         </form>
+        <h2>Hasil: {OutputText}</h2>
       </div>
-      <KeyGeneration vars={keyGeneration} />
+      {/* <KeyGeneration  /> */}
     </div>
   );
 }
