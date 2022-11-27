@@ -1,5 +1,4 @@
-import { Component } from 'react';
-import { P10, P8, merge, split, leftShift } from '../utils/HelperFunctions';
+
 
 const KeyGeneration = (props) => {
     let { key, perm10, firstSplit, leftHalfLS1, rightHalfLS1,
@@ -8,8 +7,8 @@ const KeyGeneration = (props) => {
     } = props.vars;
 
     return (
-        <div>
-            <h1 className='text-lg text-bold'>{finalKeys.key1}</h1>
+        <div className="bg-violet-200">
+            
         </div>
     );
 };

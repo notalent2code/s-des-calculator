@@ -146,6 +146,8 @@ const XOR = (key1, key2) => {
   return result;
 };
 
+// Key Generation
+
 const generateKey = (masterKey) => {
   let key = masterKey;
   let finalKeys = { key1: "", key2: "" };
@@ -184,6 +186,8 @@ const generateKey = (masterKey) => {
 
   return result;
 };
+
+// Encrypt/Decrypt
 
 const calculateSDES = (plainText, keys, mode) => {
   if (mode === "DECRYPT") {
@@ -264,30 +268,3 @@ export {
   generateKey,
   calculateSDES,
 };
-
-// console.log(P10("0111100001"));
-// console.log(split(P10("0111100001")));
-// console.log(leftShift(split(P10("0111100001")).leftHalf, 1));
-// console.log(leftShift(split(P10("0111100001")).rightHalf, 1));
-// console.log(P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))));
-
-// console.log("\n");
-// console.log(leftShift(split(P10("0111100001")).leftHalf, 3));
-// console.log(leftShift(split(P10("0111100001")).rightHalf, 3));
-// console.log(P8(merge(leftShift(split(P10("0111100001")).leftHalf, 3), leftShift(split(P10("0111100001")).rightHalf, 3))));
-// console.log("\n");
-
-// console.log(IP("01001011"));
-// console.log(split(IP("01001011")));
-// console.log(EP(split(IP("01001011")).rightHalf));
-// console.log(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1)))));
-// console.log(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))));
-// console.log(S0(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).leftHalf));
-// console.log(S1(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).rightHalf));
-// console.log(P4(merge(S0(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).leftHalf), S1(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).rightHalf))));
-// console.log(XOR(split(IP("01001011")).leftHalf, P4(merge(S0(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).leftHalf), S1(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).rightHalf)))));
-// console.log(merge(XOR(split(IP("01001011")).leftHalf, P4(merge(S0(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).leftHalf), S1(split(XOR(EP(split(IP("01001011")).rightHalf), P8(merge(leftShift(split(P10("0111100001")).leftHalf, 1), leftShift(split(P10("0111100001")).rightHalf, 1))))).rightHalf)))), split(IP("01001011")).rightHalf));
-
-// console.log(P8("1101100001"));
-// console.log(P4("1101"));
-// console.log(IP_1("10110101"));
