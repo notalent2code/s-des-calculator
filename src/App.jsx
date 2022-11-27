@@ -22,10 +22,10 @@ function App() {
   };
 
   return (
-    <div className="container p-3 prose bg-violet-200">
-      <h1 className="hero-content text-center">Simplified DES Calculator</h1>
+    <div className="container mt-5 p-3 prose rounded-md bg-violet-200">
+      <h1 className="hero-content pt-0 m-0 text-center">Simplified DES Calculator</h1>
       <div className="bg-white rounded-md">
-        <h2 className="text-center ">Input:</h2>
+        <h2 className="text-center pt-3 m-0">Input:</h2>
         <form onSubmit={runSDES}>
           <div className="flex flex-row justify-center gap-20">
             <div>
