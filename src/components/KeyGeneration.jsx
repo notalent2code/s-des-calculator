@@ -8,7 +8,7 @@ const KeyGeneration = (props) => {
 
     return (
         <div className="bg-violet-200">
-            
+            dwada
         </div>
     );
 };
