@@ -104,6 +104,7 @@ function App() {
               type="reset"
               onClick={() => {
                 setMode("ENCRYPT");
+                setOutputText("");
               }}
               className="btn btn-error w-32 rounded-full"
             >
@@ -115,17 +116,9 @@ function App() {
       <div className="prose card drop-shadow-xl mt-5 p-3 bg-white rounded-md">
         <h2>Hasil: {OutputText}</h2>
       </div>
-      <div>
-        {/* <KeyGeneration vars={keyResult} /> */}
-      </div>
+      <div>{/* <KeyGeneration vars={keyResult} /> */}</div>
     </div>
   );
 }
 
 export default App;
-
-// function App(){
-//   return <h1>Hello World</h1>
-// }
-
-// export default App;
